@@ -8,7 +8,7 @@ version = "7.0.0b2"
 description = "Unofficial TikTok LIVE API for Python: real-time chat, gift, like, follow and viewer events from any TikTok livestream."
 readme = "README.md"  # Corrected format
 requires-python = ">=3.10"
-license = { text = "AGPL" }
+license = { file = "LICENSE" }
 authors = [
     { name = "Isaac Kogan", email = "info@isaackogan.com" }
 ]
@@ -30,7 +30,7 @@ dependencies = [
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
+    "License :: Other/Proprietary License",
     "Natural Language :: English",
     "Framework :: AsyncIO",
     "Topic :: Communications :: Chat",
