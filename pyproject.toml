@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "TikTokLive"
 version = "7.0.0b2"
-description = "TikTok Live Python Client"
+description = "Unofficial TikTok LIVE API for Python: real-time chat, gift, like, follow and viewer events from any TikTok livestream."
 readme = "README.md"  # Corrected format
 requires-python = ">=3.10"
 license = { text = "AGPL" }
@@ -28,14 +28,19 @@ dependencies = [
 ]
 
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
-    "Topic :: Software Development :: Build Tools",
     "License :: OSI Approved :: MIT License",
     "Natural Language :: English",
+    "Framework :: AsyncIO",
+    "Topic :: Communications :: Chat",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Software Development :: Libraries :: Python Modules",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12"
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
 
 [project.optional-dependencies]
@@ -94,6 +99,12 @@ testpaths = ["tests"]
 
 [project.urls]
 Homepage = "https://github.com/isaackogan/TikTokLive"
+Documentation = "https://isaackogan.github.io/TikTokLive/"
+Source = "https://github.com/isaackogan/TikTokLive"
+Issues = "https://github.com/isaackogan/TikTokLive/issues"
+Changelog = "https://github.com/isaackogan/TikTokLive/releases"
+Discord = "https://discord.gg/e2XwPNTBBr"
+"Production API" = "https://www.eulerstream.com/"
 
 [tool.setuptools]
 license-files = ['LICENSE']
