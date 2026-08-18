@@ -4,7 +4,6 @@
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 import importlib
-import json
 # -- Path setup --------------------------------------------------------------
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -13,9 +12,20 @@ import json
 #
 import os
 import sys
+import re
+from pathlib import Path
 
-manifest = json.loads(open("manifest.json", "r").read())
-version = "v" + manifest["version"]
+# Single source of truth: the file release.yml stamps on every release.
+# Reading it textually (rather than importing TikTokLive) keeps conf.py
+# importable without the package's runtime dependencies installed.
+_VERSION_FILE = Path(__file__).resolve().parents[2] / "TikTokLive" / "__version__.py"
+_VERSION_MATCH = re.search(
+    r'PACKAGE_VERSION\s*:\s*str\s*=\s*"([^"]+)"', _VERSION_FILE.read_text()
+)
+if _VERSION_MATCH is None:
+    raise RuntimeError(f"Could not parse PACKAGE_VERSION from {_VERSION_FILE}")
+
+version = release = _VERSION_MATCH.group(1)
 
 sys.path.insert(0, os.path.abspath('../../'))
 
@@ -44,9 +54,16 @@ html_logo = "logo.png"
 templates_path = ['_templates']
 
 html_theme = "furo"
-html_title = project + " " + version
 
-print("Building for version", html_title)
+# The single highest-leverage on-page string on the site. Keyword-led, and
+# deliberately free of the version number so the <title> is stable across
+# releases (a churning title resets accumulated relevance).
+html_title = "TikTok LIVE API for Python — TikTokLive Documentation"
+html_short_title = "TikTokLive Docs"
+
+# Required for canonical tags and by sphinx-sitemap. Must match the live
+# Pages URL exactly, trailing slash included.
+html_baseurl = "https://isaackogan.github.io/TikTokLive/"
 
 html_theme_options = {
     "light_css_variables": {
@@ -54,7 +71,8 @@ html_theme_options = {
     "dark_css_variables": {
         "color-problematic": "#80aeef",
         "sidebar-filter": "invert(0.95)"
-    }
+    },
+    "sidebar_hide_name": True,
 }
 
 # List of patterns, relative to source directory, that match files and
