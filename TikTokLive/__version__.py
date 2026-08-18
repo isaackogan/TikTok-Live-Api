@@ -1,1 +1,1 @@
-PACKAGE_VERSION: str = "7.0.0b2"
+PACKAGE_VERSION: str = "7.0.0"

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "TikTokLive"
-version = "7.0.0b2"
+version = "7.0.0"
 description = "Unofficial TikTok LIVE API for Python: real-time chat, gift, like, follow and viewer events from any TikTok livestream."
 readme = "README.md"  # Corrected format
 requires-python = ">=3.10"
