@@ -84,11 +84,13 @@ def main(build_dir: str = "docs/dist/html") -> int:
     anchor_re = re.compile(r"<a\b[^>]*>", re.I)
     nofollowed: list[str] = []
     pages_with_euler = 0
+    per_page_counts: list[tuple[str, int]] = []
     for p in pages:
         html = p.read_text(encoding="utf-8", errors="replace")
         euler_anchors = [a for a in anchor_re.findall(html) if EULER_HOST in a]
         if euler_anchors:
             pages_with_euler += 1
+        per_page_counts.append((p.relative_to(root).as_posix(), len(euler_anchors)))
         nofollowed += [
             f"{p.relative_to(root).as_posix()}: {a[:90]}"
             for a in euler_anchors
@@ -100,6 +102,19 @@ def main(build_dir: str = "docs/dist/html") -> int:
     check("eulerstream.com linked from every page",
           pages_with_euler == len(pages),
           f"{pages_with_euler}/{len(pages)} pages")
+
+    # Presence alone is too weak. Both the sidebar block and the footer block
+    # contribute sitewide links; if a future Furo release restructures
+    # {% block footer %}, Jinja silently discards our orphaned override and the
+    # footer links vanish while a presence-only check still passes. Every page
+    # must carry all three sitewide links.
+    MIN_LINKS_PER_PAGE = 3
+    under_linked = [
+        f"{name}:{count}" for name, count in per_page_counts if count < MIN_LINKS_PER_PAGE
+    ]
+    check(f"every page carries >= {MIN_LINKS_PER_PAGE} eulerstream links",
+          not under_linked,
+          f"{len(under_linked)} under-linked, e.g. {under_linked[:3]}")
 
     # -- Anchor diversity --------------------------------------------------
     anchor_text_re = re.compile(
