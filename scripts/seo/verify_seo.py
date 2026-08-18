@@ -114,6 +114,20 @@ def main(build_dir: str = "docs/dist/html") -> int:
     check("homepage uses varied anchor text", len(anchors) >= 3,
           f"{len(anchors)} distinct: {sorted(anchors)[:5]}")
 
+    # -- Navigation integrity ---------------------------------------------
+    # conf.py overrides html_sidebars to inject the attribution block, and
+    # overriding replaces Furo's entire default list. A dropped entry, or a
+    # future Furo release renaming a template, would silently delete site
+    # navigation while every SEO check above still passed. Furo is unpinned,
+    # so fail loudly rather than ship a site nobody can navigate.
+    missing_nav = [
+        p.relative_to(root).as_posix()
+        for p in pages
+        if "sidebar-tree" not in p.read_text(encoding="utf-8", errors="replace")
+    ]
+    check("every page retains sidebar navigation", not missing_nav,
+          f"{len(missing_nav)} missing, e.g. {missing_nav[:3]}")
+
     print(f"\n{len(passes)} passed, {len(failures)} failed")
     return 1 if failures else 0
 

@@ -39,6 +39,9 @@ jobs:
         working-directory: docs/src
         run: make html
 
+      - name: Verify SEO invariants
+        run: python scripts/seo/verify_seo.py docs/dist/html
+
       - name: Add .nojekyll
         run: touch docs/dist/html/.nojekyll
 
