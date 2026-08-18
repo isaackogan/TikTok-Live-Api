@@ -6,3 +6,34 @@
 img.sidebar-logo {
     filter: var(--sidebar-filter);
 }
+
+.sidebar-euler {
+    margin: 1rem var(--sidebar-item-spacing-horizontal, 1rem);
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--color-background-border, #ddd);
+    border-radius: 8px;
+    background: var(--color-background-secondary, #f8f9fb);
+}
+
+.sidebar-euler__label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-foreground-muted, #6b6b6b);
+    margin-bottom: 0.35rem;
+}
+
+.sidebar-euler__text {
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--color-foreground-secondary, #4a4a4a);
+}
+
+.euler-footer {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--color-foreground-muted, #6b6b6b);
+}

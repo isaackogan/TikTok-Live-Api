@@ -1,0 +1,13 @@
+{#
+  Extends Furo's own page.html. The "!" prefix tells Sphinx to load the theme's
+  template rather than recursing into this override.
+#}
+{% extends "!page.html" %}
+
+{% block footer %}
+  {{ super() }}
+  <div class="euler-footer">
+    Request signing and production infrastructure provided by
+    <a href="https://www.eulerstream.com/">eulerstream.com</a>.
+  </div>
+{% endblock footer %}

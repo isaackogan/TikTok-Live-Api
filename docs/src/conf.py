@@ -57,6 +57,22 @@ templates_path = ['_templates']
 
 html_theme = "furo"
 
+# Furo's defaults, copied verbatim from its theme.conf, with our attribution
+# block inserted after navigation. Overriding html_sidebars replaces the whole
+# list, so omitting any entry here silently removes it from the sidebar.
+html_sidebars = {
+    "**": [
+        "sidebar/brand.html",
+        "sidebar/search.html",
+        "sidebar/scroll-start.html",
+        "sidebar/navigation.html",
+        "sidebar/eulerstream.html",
+        "sidebar/ethical-ads.html",
+        "sidebar/scroll-end.html",
+        "sidebar/variant-selector.html",
+    ]
+}
+
 # The single highest-leverage on-page string on the site. Keyword-led, and
 # deliberately free of the version number so the <title> is stable across
 # releases (a churning title resets accumulated relevance).
@@ -73,6 +89,16 @@ html_baseurl = "https://isaackogan.github.io/TikTokLive/"
 # single-version site needs.
 sitemap_url_scheme = "{link}"
 sitemap_filename = "sitemap.xml"
+
+# Utility and stub pages carry no unique crawlable content — search.html is
+# even stamped noindex by Furo — so they are not advertised in the sitemap.
+# modules.html is a 7-line stub whose entire body is one toctree link.
+sitemap_excludes = [
+    "search.html",
+    "genindex.html",
+    "py-modindex.html",
+    "modules.html",
+]
 
 # -- Open Graph / social cards -------------------------------------------------
 ogp_site_url = html_baseurl
