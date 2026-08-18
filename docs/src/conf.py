@@ -109,7 +109,12 @@ ogp_image = (
     "/master/.github/SquareLogo.png"
 )
 ogp_image_alt = "TikTokLive — TikTok LIVE API for Python"
-ogp_description_length = 200
+# sphinxext-opengraph derives og:description from the doctree and concatenates
+# paragraphs until this limit, so the limit is sized to stop exactly at the end
+# of the homepage's opening paragraph (150 chars). A larger value would pull in
+# the next paragraph and truncate mid-word; this keeps the social preview a
+# complete sentence.
+ogp_description_length = 155
 ogp_enable_meta_description = True
 ogp_custom_meta_tags = [
     '<meta name="twitter:card" content="summary_large_image" />',

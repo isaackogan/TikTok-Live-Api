@@ -5,11 +5,11 @@
 TikTok LIVE API for Python
 ==========================
 
-This is the reference documentation for **TikTokLive**, the unofficial
-Python client for the TikTok LIVE Webcast service. It connects to any public
-TikTok livestream using only a creator's ``@unique_id`` and emits real-time
-events for comments, gifts, likes, follows, shares, viewer counts and battles.
+TikTokLive is the unofficial TikTok LIVE API for Python: real-time comments,
+gifts, likes, follows and viewer counts from any public TikTok livestream.
 
+It also emits shares, battles and 50+ other event types. Connecting requires
+only a creator's @unique_id -- no login, credentials, or app registration.
 These docs cover the full public API surface. If you are new, start with the
 quickstart in the project overview below, then move to the module reference.
 
