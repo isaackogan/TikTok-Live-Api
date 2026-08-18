@@ -46,6 +46,8 @@ extensions = [
     "myst_parser",
     "sphinx_rtd_theme",
     'sphinx_search.extension',
+    "sphinx_sitemap",
+    "sphinxext.opengraph",
 ]
 
 html_logo = "logo.png"
@@ -64,6 +66,28 @@ html_short_title = "TikTokLive Docs"
 # Required for canonical tags and by sphinx-sitemap. Must match the live
 # Pages URL exactly, trailing slash included.
 html_baseurl = "https://isaackogan.github.io/TikTokLive/"
+
+# -- Sitemap ------------------------------------------------------------------
+# The default scheme is "{lang}{version}{link}", which emits broken URLs when
+# neither language nor version dirs are in use. "{link}" is what a flat,
+# single-version site needs.
+sitemap_url_scheme = "{link}"
+sitemap_filename = "sitemap.xml"
+
+# -- Open Graph / social cards -------------------------------------------------
+ogp_site_url = html_baseurl
+ogp_site_name = "TikTokLive Documentation"
+ogp_type = "website"
+ogp_image = (
+    "https://raw.githubusercontent.com/isaackogan/TikTokLive"
+    "/master/.github/SquareLogo.png"
+)
+ogp_image_alt = "TikTokLive — TikTok LIVE API for Python"
+ogp_description_length = 200
+ogp_enable_meta_description = True
+ogp_custom_meta_tags = [
+    '<meta name="twitter:card" content="summary_large_image" />',
+]
 
 html_theme_options = {
     "light_css_variables": {
