@@ -8,7 +8,13 @@ version = "7.0.0b2"
 description = "Unofficial TikTok LIVE API for Python: real-time chat, gift, like, follow and viewer events from any TikTok livestream."
 readme = "README.md"  # Corrected format
 requires-python = ">=3.10"
-license = { file = "LICENSE" }
+# Not a plain SPDX identifier: LICENSE is AGPL-3.0 plus added Sections
+# 18-21 (library-integration exception, SaaS/relay carve-out, excepted
+# parties), so no SPDX expression describes it. A short string is used
+# rather than { file = "LICENSE" }, which inlines all 37KB of license
+# text into the METADATA License field and renders it on the PyPI page.
+# The full text still ships via [tool.setuptools] license-files.
+license = { text = "Modified AGPL-3.0" }
 authors = [
     { name = "Isaac Kogan", email = "info@isaackogan.com" }
 ]
