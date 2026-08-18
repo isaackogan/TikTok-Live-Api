@@ -142,6 +142,11 @@ html_js_files = [
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['static']
+
+# Files copied verbatim to the site root. Used for the Google Search Console
+# verification file, which must be served at an exact path.
+html_extra_path = ["extra"]
+
 html_permalinks_icon = "#"
 
 source_suffix = {
